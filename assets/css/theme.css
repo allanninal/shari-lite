@@ -1,0 +1,312 @@
+/* Shared by every theme (tools/build-theme.mjs). */
+.site-main > .alignfull { margin-block: 0; }
+.wp-site-blocks > footer { margin-block-start: 0; }
+/* A long menu wraps instead of running past the edge: the Theme Unit Test's
+   twenty nested pages in the fallback menu pushed Mirror Glaze Lite's header
+   35px wide of a 1280px window. */
+.site-header__bar > .wp-block-navigation { min-width: 0; flex: 1 1 auto; justify-content: flex-end; }
+.site-header .wp-block-navigation__container { flex-wrap: wrap; justify-content: flex-end; row-gap: 0.25rem; }
+/* The menu sits at the inline end, so its submenus open back towards the start: WordPress opens
+   nested ones to the right, past the page edge (found the same way). A closed
+   submenu is only hidden, so even shut it made the page scroll sideways. One
+   class more than core's own rule, which loads after this file. */
+.site-header .wp-block-navigation .has-child .wp-block-navigation__submenu-container { inset-inline-start: auto; inset-inline-end: 0; }
+.site-header .wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container { inset-inline-start: auto; inset-inline-end: 100%; }
+/* And a long page name in a dropdown wraps inside it instead of running out of
+   it: a link set not to wrap ran 88px past its closed dropdown. */
+.site-header .wp-block-navigation__submenu-container { max-width: min(18rem, calc(100vw - 2rem)); }
+.site-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content { white-space: normal; overflow-wrap: anywhere; }
+/* Preformatted text scrolls inside its own box: a poem's long lines in a <pre>
+   (Theme Unit Test, "Markup: HTML Tags and Formatting") made the page 88px wide. */
+.wp-site-blocks pre { max-width: 100%; overflow-x: auto; }
+/* Photo credits (tools/lib/credits.mjs): closed until asked for, links in the
+   footer's own colour like the legal line above. */
+.site-footer__credits summary { cursor: pointer; }
+.site-footer__credits a { color: inherit; }
+.site-footer__credits summary + p { margin-block-start: 0.5em; }
+.site-footer__credits ul { padding-inline-start: 1.25em; margin-block: 0.5em 0; }
+
+/* Shari — what theme.json cannot say. Printed inline (inc/setup.php). */
+
+.is-style-eyebrow {
+	font-size: 0.6875rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--accent);
+	margin-bottom: 0.5rem;
+}
+
+.site-header { border-bottom: 1px solid var(--wp--preset--color--border-base); padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.site-header .wp-block-site-title { font-family: var(--wp--preset--font-family--display); }
+.site-header .wp-block-navigation a { color: var(--wp--preset--color--text-muted); }
+.site-header .wp-block-navigation a:hover { color: var(--wp--preset--color--accent-dark); }
+.site-footer { padding-top: 3.5rem; padding-bottom: 2rem; }
+.site-footer .wp-block-site-title { font-family: var(--wp--preset--font-family--display); }
+.site-footer a { color: var(--wp--preset--color--text-strong); }
+.site-footer__legal { margin-top: 2.5rem; border-top: 1px solid var(--wp--preset--color--border-base); padding-top: 1.25rem; }
+.site-main { margin-top: 0; }
+.site-page { padding-top: 3rem; padding-bottom: 4rem; }
+
+.sh-section { padding-top: clamp(3.5rem, 8vw, 6.5rem); padding-bottom: clamp(3.5rem, 8vw, 6.5rem); }
+.sh-lede { max-width: 42rem; }
+.has-text-align-center.sh-lede { margin-inline: auto; }
+.sh-muted { color: var(--wp--preset--color--text-muted); }
+.sh-ja { font-size: 0.8125rem; letter-spacing: 0.12em; color: var(--wp--preset--color--text-muted); margin: 0.15rem 0 0.75rem; font-family: var(--wp--preset--font-family--body), "Hiragino Sans", "Yu Gothic", "Noto Sans CJK JP", sans-serif; }
+
+.wp-block-button__link { border-radius: 2px; font-weight: 700; padding: 0.85rem 1.75rem; }
+.wp-block-button.is-style-outline .wp-block-button__link { border-width: 1px; border-color: var(--wp--preset--color--accent); color: var(--wp--preset--color--accent-dark); }
+.sh-btn-washi .wp-block-button__link { background: #F7F5F0; color: #0F0E0B; }
+.wp-block-button.is-style-outline.sh-on-dark .wp-block-button__link { border-color: #F7F5F0; color: #F7F5F0; }
+
+/* Hero. The overlay and the ink band stay sumi in both styles. */
+.sh-hero { justify-content: flex-start; }
+.sh-hero .wp-block-cover__background { background-color: #141210 !important; }
+.sh-hero__inner { max-width: 38rem; }
+.sh-on-ink, .sh-on-ink a { color: #F7F5F0; }
+.is-style-eyebrow.sh-hero__eyebrow { color: #C7D2FE; }
+.sh-hero__tagline { font-family: var(--wp--preset--font-family--display); font-style: italic; font-size: 1.5rem; }
+.sh-hero__lede { font-size: 1.0625rem; }
+.sh-facts { gap: 2rem; margin-top: 2.5rem; }
+.sh-fact > * { margin: 0; }
+.sh-fact__value { font-family: var(--wp--preset--font-family--display); font-weight: 700; font-size: 1.75rem; }
+.sh-fact__label { font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Omakase */
+.sh-steps { padding-inline-start: 1.25rem; color: var(--wp--preset--color--text-muted); }
+.sh-steps li { margin-bottom: 0.5rem; }
+.sh-card { padding: 1.5rem; border: 1px solid var(--wp--preset--color--border-base); border-inline-start: 3px solid var(--wp--preset--color--accent); margin-bottom: 1rem; }
+.sh-card__head { gap: 1rem; }
+.sh-card__title { font-size: 1.5rem; margin: 0; }
+.sh-card > :last-child { margin-bottom: 0; }
+.sh-badge { margin: 0; padding: 0.1rem 0.5rem; font-size: 0.6875rem; font-weight: 700; white-space: nowrap; background: var(--wp--preset--color--accent-light); color: var(--wp--preset--color--accent-dark); }
+
+/* Menu */
+.sh-menu-cat { margin-top: 3rem; margin-bottom: 0; padding-bottom: 0.25rem; border-bottom: 1px solid var(--wp--preset--color--border-base); }
+/* WordPress's two-column grid assumes a gap of at most 1.25rem. */
+.sh-items { gap: 1.75rem 1.25rem; margin-top: 1.5rem; }
+.sh-item { gap: 1rem; }
+.sh-item > * { margin: 0; }
+.sh-item__name { font-size: 1.25rem; margin: 0; }
+.sh-item .sh-ja { margin: 0; }
+.sh-item__desc { font-size: 0.9375rem; margin: 0.25rem 0 0; }
+.sh-price { font-weight: 700; color: var(--wp--preset--color--text-strong); }
+.sh-item .sh-price { max-width: 7rem; text-align: end; font-size: 0.9375rem; }
+.sh-menu-note { margin-top: 3rem; }
+
+/* Chef */
+.sh-chef__title { font-family: var(--wp--preset--font-family--display); font-style: italic; font-size: 1.25rem; color: var(--wp--preset--color--text-muted); margin-top: 0; }
+.sh-quote { font-family: var(--wp--preset--font-family--display); font-style: italic; font-size: 1.25rem; line-height: 1.5; color: var(--wp--preset--color--text-strong); padding-inline-start: 1rem; border-inline-start: 2px solid var(--wp--preset--color--accent); }
+.sh-panel__row { padding: 0.75rem 0; border-top: 1px solid var(--wp--preset--color--border-light); }
+.sh-panel__row:first-child { border-top: 0; padding-top: 0; }
+.sh-panel__row > * { margin: 0; }
+.sh-panel__key { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp--preset--color--text-muted); }
+.sh-panel__value { font-family: var(--wp--preset--font-family--display); font-weight: 700; font-size: 1.125rem; color: var(--wp--preset--color--text-strong); }
+.sh-strip { gap: 1.25rem; margin-top: 2.5rem; }
+.sh-photo { margin: 0; }
+.sh-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* Reservations */
+.sh-ink { background: #141210; color: #F7F5F0; }
+.sh-ink h2, .sh-ink h3 { color: #F7F5F0; }
+.sh-ink a { color: #F7F5F0; }
+.sh-ink-soft { color: #C8C4BC; }
+.sh-option { padding: 1.25rem; margin-top: 1rem; border: 1px solid #3C382F; }
+.sh-option > :last-child { margin-bottom: 0; }
+.sh-option__title { font-family: var(--wp--preset--font-family--display); font-weight: 700; font-size: 1.375rem; color: #F7F5F0; margin-top: 0; margin-bottom: 0.25rem; }
+.sh-hours { margin: 1.25rem 0; }
+.sh-hours__row { gap: 1rem; padding: 0.5rem 0; border-top: 1px solid #3C382F; }
+.sh-hours__row > * { margin: 0; color: #C8C4BC; }
+.sh-hours__day { font-weight: 700; color: #F7F5F0; }
+.sh-hours__time { text-align: end; }
+.sh-address { font-weight: 700; }
+
+/* 1.1.0: notices, omakase policy, takeout sets, open now. */
+.sh-policy { margin-top: 1.5rem; }
+.sh-policy .dish-facts__key { color: var(--wp--preset--color--text-strong); }
+.sh-sets { gap: 1.5rem; }
+.sh-set-parts { margin: 0.75rem 0 0; padding-inline-start: 1.25rem; font-size: 0.9375rem; line-height: 1.7; }
+.sh-menu-note { margin-top: 3rem; }
+.sh-open { margin-top: 0.5rem; }
+/* Food shop extras (tools/skeleton-food/, themes with "food"). Block styles on core blocks. */
+
+/* Section edges: a wave, scallops or a zigzag in the section's own colour, hanging from its
+   bottom over the top of whatever comes next. Drawn as a strip below the section rather than
+   cut out of it: a cut-out shows whatever is behind, and on Double Scoop that was the page
+   colour, a pale scalloped line between two dark sections, whatever the margins were
+   (2026-11-07). Decorative only, so it ignores the pointer and is not announced. */
+.wp-block-group.is-style-edge-wave,
+.wp-block-group.is-style-edge-scallop,
+.wp-block-group.is-style-edge-zigzag {
+	--food-edge: 1.25rem;
+	position: relative;
+	z-index: 1;
+}
+.wp-block-group.is-style-edge-wave::after,
+.wp-block-group.is-style-edge-scallop::after,
+.wp-block-group.is-style-edge-zigzag::after {
+	content: "";
+	position: absolute;
+	inset-inline: 0;
+	top: calc(100% - 1px);
+	height: calc(var(--food-edge) + 1px);
+	background: inherit;
+	pointer-events: none;
+	-webkit-mask: var(--food-edge-shape) top left / calc(var(--food-edge) * 4) 100% repeat-x;
+	mask: var(--food-edge-shape) top left / calc(var(--food-edge) * 4) 100% repeat-x;
+}
+.wp-block-group.is-style-edge-wave { --food-edge-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 20' preserveAspectRatio='none'%3E%3Cpath d='M0 0h80v10c-10 0-10 10-20 10S50 10 40 10 30 20 20 20 10 10 0 10z'/%3E%3C/svg%3E"); }
+.wp-block-group.is-style-edge-scallop { --food-edge-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 10' preserveAspectRatio='none'%3E%3Cpath d='M0 0h40v0a10 10 0 0 1-20 0 10 10 0 0 1-20 0z'/%3E%3C/svg%3E"); --food-edge: 0.9rem; }
+.wp-block-group.is-style-edge-zigzag { --food-edge-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20' preserveAspectRatio='none'%3E%3Cpath d='M0 0h40L20 20z'/%3E%3C/svg%3E"); --food-edge: 0.9rem; }
+
+/* Textures: a quiet pattern behind a section, in its accent colour at low strength, on a
+   layer under the content so text keeps its contrast with the section colour. */
+.wp-block-group.is-style-texture-dots,
+.wp-block-group.is-style-texture-sprinkles { position: relative; isolation: isolate; }
+.wp-block-group.is-style-texture-dots::before,
+.wp-block-group.is-style-texture-sprinkles::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background: var(--wp--preset--color--accent);
+	opacity: 0.1;
+}
+.wp-block-group.is-style-texture-dots::before {
+	-webkit-mask: radial-gradient(circle, #000 1.5px, transparent 2px) 0 0 / 18px 18px;
+	mask: radial-gradient(circle, #000 1.5px, transparent 2px) 0 0 / 18px 18px;
+}
+.wp-block-group.is-style-texture-sprinkles::before {
+	opacity: 0.16;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg%3E%3Crect x='10' y='14' width='14' height='4' rx='2' transform='rotate(30 17 16)'/%3E%3Crect x='60' y='8' width='14' height='4' rx='2' transform='rotate(-40 67 10)'/%3E%3Crect x='96' y='40' width='14' height='4' rx='2' transform='rotate(70 103 42)'/%3E%3Crect x='30' y='60' width='14' height='4' rx='2' transform='rotate(-15 37 62)'/%3E%3Crect x='76' y='82' width='14' height='4' rx='2' transform='rotate(45 83 84)'/%3E%3Crect x='8' y='100' width='14' height='4' rx='2' transform='rotate(-60 15 102)'/%3E%3Crect x='52' y='106' width='14' height='4' rx='2' transform='rotate(10 59 108)'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 120px 120px;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg%3E%3Crect x='10' y='14' width='14' height='4' rx='2' transform='rotate(30 17 16)'/%3E%3Crect x='60' y='8' width='14' height='4' rx='2' transform='rotate(-40 67 10)'/%3E%3Crect x='96' y='40' width='14' height='4' rx='2' transform='rotate(70 103 42)'/%3E%3Crect x='30' y='60' width='14' height='4' rx='2' transform='rotate(-15 37 62)'/%3E%3Crect x='76' y='82' width='14' height='4' rx='2' transform='rotate(45 83 84)'/%3E%3Crect x='8' y='100' width='14' height='4' rx='2' transform='rotate(-60 15 102)'/%3E%3Crect x='52' y='106' width='14' height='4' rx='2' transform='rotate(10 59 108)'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 120px 120px;
+}
+
+/* Menu board: one line per item, name, a dotted leader, the price. */
+.is-style-menu-board .menu-board__group + .menu-board__group { margin-block-start: var(--wp--preset--spacing--50, 2rem); }
+.is-style-menu-board .menu-board__row { gap: 0.5rem; align-items: baseline; margin-block: 0.35rem 0; }
+.is-style-menu-board .menu-board__name { display: flex; flex: 1 1 auto; align-items: baseline; margin: 0; min-width: 0; }
+.is-style-menu-board .menu-board__name::after {
+	content: "";
+	flex: 1 1 1.5rem;
+	min-width: 1.5rem;
+	margin-inline: 0.5rem 0;
+	border-block-end: 2px dotted currentColor;
+	opacity: 0.45;
+	transform: translateY(-0.3em);
+}
+.is-style-menu-board .menu-board__price { margin: 0; flex: none; font-variant-numeric: tabular-nums; font-weight: 600; }
+.is-style-menu-board .menu-board__chips { margin-block: 0.15rem 0; }
+
+/* Chips: a short list of tags as pills. Diet labels carry a mark, so the difference is
+   not colour alone. */
+.wp-block-list.is-style-chips { display: flex; flex-wrap: wrap; gap: 0.375rem; list-style: none; padding: 0; margin-block: 0.5rem 0; }
+.wp-block-list.is-style-chips li {
+	margin: 0;
+	padding: 0.15em 0.7em;
+	border: 1px solid currentColor;
+	border-radius: 999px;
+	font-size: 0.8125rem;
+	line-height: 1.5;
+}
+.wp-block-list.is-style-chips li.is-diet::before { content: "✓\00a0"; content: "✓\00a0" / ""; }
+
+/* Open now: empty (and hidden) until the script has read the hours. */
+.is-style-open-status:empty { display: none; }
+.is-style-open-status { display: flex; align-items: center; gap: 0.5em; font-weight: 600; }
+.is-style-open-status::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; background: currentColor; opacity: 0.5; flex: none; }
+.is-style-open-status[data-state="open"]::before { opacity: 1; background: var(--wp--preset--color--accent); }
+.editor-styles-wrapper .is-style-open-status:empty { display: flex; }
+
+/* Order cut-off: the script writes the line from the order-ahead rules; empty
+   (and hidden) when there are none. A line the owner typed stays as written
+   until the script can replace it. */
+.is-style-order-cutoff:empty { display: none; }
+.is-style-order-cutoff { font-weight: 600; }
+.editor-styles-wrapper .is-style-order-cutoff:empty { display: block; min-height: 1.5em; outline: 1px dashed currentColor; }
+
+/* Schedule: one item per time; the script marks what is out and what is next. */
+.wp-block-list.is-style-schedule { list-style: none; padding: 0; margin-block: 1rem 0; display: grid; gap: 0.5rem; }
+.wp-block-list.is-style-schedule li { margin: 0; padding: 0.75rem 1rem; border: 1px solid color-mix(in srgb, currentColor 25%, transparent); border-radius: 0.75rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; }
+.wp-block-list.is-style-schedule li[data-label]::after { content: attr(data-label); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; align-self: center; }
+.wp-block-list.is-style-schedule li[data-state="next"] { border-color: var(--wp--preset--color--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--wp--preset--color--accent) 30%, transparent); }
+
+/* "Three ways to start" (tools/lib/food.mjs ladder): numbered cards, cheapest first. */
+.ladder-section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.ladder { gap: 1.25rem; }
+.ladder__step { border: 1px solid var(--wp--preset--color--border-base); border-radius: 0.75rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.ladder__step > * { margin: 0 !important; }
+.ladder__step > .wp-block-buttons { margin-top: auto !important; padding-top: 0.5rem; }
+.ladder__n { width: 2rem; height: 2rem; border-radius: 9999px; display: grid; place-items: center; font-weight: 700; background: var(--wp--preset--color--accent); color: var(--wp--preset--color--bg); }
+.ladder__title { font-size: 1.25rem; }
+.ladder__price { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Dish notes (themes with "dishes", tools/lib/dish.mjs): the Contains line, meta line, raw mark,
+   notices, heat pips and the size and catering tables. */
+.dish-contains, .dish-meta { margin-block: 0.375rem 0; color: var(--wp--preset--color--text-muted); line-height: 1.5; }
+.dish-contains strong { font-weight: 700; color: var(--wp--preset--color--text-strong); }
+.dish-raw { font-weight: 700; margin-inline-start: 0.15em; }
+.dish-notice { max-width: 46rem; margin-inline: auto; color: var(--wp--preset--color--text-muted); line-height: 1.6; }
+.dish-heat { margin: 0; letter-spacing: 0.1em; font-size: 0.8125rem; color: var(--wp--preset--color--accent-dark); }
+.dish-heat .dish-heat__off { opacity: 0.3; }
+.dish-heat .dish-heat__word { letter-spacing: 0; margin-inline-start: 0.4em; color: var(--wp--preset--color--text-muted); }
+.dish-legend { font-size: 0.875rem; color: var(--wp--preset--color--text-muted); text-align: center; }
+.dish-table { max-width: 46rem; margin-inline: auto; overflow-x: auto; }
+.dish-table table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.dish-table th, .dish-table td { text-align: start; padding: 0.5rem 0.75rem 0.5rem 0; border-bottom: 1px solid var(--wp--preset--color--border-base); vertical-align: top; }
+.dish-table thead th { color: var(--wp--preset--color--text-muted); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.dish-table .wp-element-caption { color: var(--wp--preset--color--text-muted); text-align: start; }
+.dish-facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1rem; margin: 1rem 0; font-size: 0.9375rem; }
+.dish-facts p { margin: 0; }
+.dish-facts .dish-facts__key { font-weight: 700; }
+.dish-stamp { font-size: 0.875rem; color: var(--wp--preset--color--text-muted); }
+.dish-banner { padding: 0.75rem 1rem; border-inline-start: 4px solid var(--wp--preset--color--accent); background: var(--wp--preset--color--surface-2); font-weight: 600; }
+.dish-directions a { font-weight: 700; }
+
+/* Journal cards and Contact Form 7. */
+.wp-block-post-template .wp-block-post-title a { text-decoration: none; }
+.wp-block-post-template .wp-block-post-date { font-size: 0.875rem; color: var(--wp--preset--color--text-muted); }
+
+.wpcf7 { max-width: 40rem; margin-top: 2rem; }
+.wpcf7 form > p { margin: 0 0 1.25rem; }
+.wpcf7 label { display: block; font-weight: 600; color: var(--wp--preset--color--text-strong); }
+.wpcf7 input:not([type="submit"]), .wpcf7 textarea {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 2.75rem;
+	margin-top: 0.375rem;
+	padding: 0.625rem 0.75rem;
+	font: inherit;
+	font-weight: 400;
+	color: var(--wp--preset--color--text-strong);
+	background: var(--wp--preset--color--bg);
+	border: 1px solid var(--wp--preset--color--text-muted);
+	border-radius: 4px;
+}
+.wpcf7 textarea { height: 10rem; }
+.wpcf7 input:focus-visible, .wpcf7 textarea:focus-visible { outline: 2px solid var(--wp--preset--color--accent-dark); outline-offset: 1px; }
+.wpcf7 input[type="submit"] {
+	min-height: 2.75rem;
+	padding: 0.625rem 1.5rem;
+	font: inherit;
+	font-weight: 600;
+	color: var(--wp--preset--color--bg);
+	background: var(--wp--preset--color--accent-dark);
+	border: 0;
+	border-radius: 999px;
+	cursor: pointer;
+}
+.wpcf7 .wpcf7-not-valid-tip { margin-top: 0.25rem; font-size: 0.875rem; color: var(--wp--preset--color--accent-dark); }
+.wpcf7 form .wpcf7-response-output { margin: 1rem 0 0; padding: 0.625rem 0.75rem; border-radius: 4px; }
+.wpcf7 .wpcf7-spinner { display: block; margin: 0.5rem 0 0; }
+
+/* Optional plugins. Their own settings decide colours, shapes and position: the
+   theme passes on its font and keeps the footer clear, nothing more. */
+.cky-consent-container .cky-consent-bar,
+.cky-consent-container .cky-btn,
+.trp-language-switcher.trp-floating-switcher { font-family: inherit; }
+/* Both float over the page's last lines: leave them room under the footer. */
+body:has(.cky-btn-revisit-wrapper, .trp-floating-switcher) .site-footer { padding-block-end: 4.5rem; }
+.woo-variation-swatches .variable-items-wrapper .variable-item:focus-visible { outline: 2px solid var(--wp--preset--color--accent-dark); outline-offset: 2px; }
